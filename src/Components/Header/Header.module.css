@@ -156,3 +156,154 @@
   border-top: 1px solid #333;
   margin: 6px 0;
 }
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+/* Tablet */
+
+@media (max-width: 1024px) {
+  .Container {
+    padding: 14px 3%;
+    gap: 25px;
+  }
+
+  .nav {
+    gap: 15px;
+  }
+
+  .navLink {
+    font-size: 0.8rem;
+  }
+
+  .rightSection {
+    gap: 15px;
+  }
+
+  .searchInput {
+    width: 150px;
+  }
+}
+
+/* Small Tablet / Large Mobile */
+
+@media (max-width: 768px) {
+  .Container {
+    padding: 12px 3%;
+    gap: 20px;
+  }
+
+  .logo {
+    height: 24px;
+  }
+
+  .nav {
+    gap: 12px;
+  }
+
+  .navLink {
+    font-size: 0.75rem;
+  }
+
+  .rightSection {
+    gap: 12px;
+  }
+
+  .searchInput {
+    width: 120px;
+    padding: 5px 8px;
+    font-size: 0.75rem;
+  }
+
+  .userAvatar {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 600px) {
+  .Container {
+    padding: 12px 15px;
+    gap: 15px;
+  }
+
+  .logo {
+    height: 22px;
+  }
+
+  .nav {
+    gap: 10px;
+  }
+
+  .navLink {
+    font-size: 0.7rem;
+  }
+
+  .rightSection {
+    gap: 10px;
+  }
+
+  .searchInput {
+    width: 100px;
+  }
+
+  .profileButton {
+    gap: 2px;
+  }
+
+  .userAvatar {
+    width: 28px;
+    height: 28px;
+  }
+
+  .profileMenu {
+    top: 40px;
+    min-width: 160px;
+  }
+}
+
+/* Very Small Mobile */
+
+@media (max-width: 480px) {
+  .Container {
+    padding: 10px 12px;
+    gap: 10px;
+  }
+
+  .logo {
+    height: 20px;
+  }
+
+  .nav {
+    gap: 8px;
+  }
+
+  .navLink {
+    font-size: 0.65rem;
+  }
+
+  .rightSection {
+    gap: 8px;
+  }
+
+  .searchInput {
+    width: 80px;
+    padding: 4px 6px;
+  }
+
+  .notificationBadge {
+    width: 14px;
+    height: 14px;
+    font-size: 0.55rem;
+    top: -5px;
+    right: -6px;
+  }
+
+  .userAvatar {
+    width: 26px;
+    height: 26px;
+  }
+}
