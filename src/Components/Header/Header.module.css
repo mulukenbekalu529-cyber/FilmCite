@@ -1,0 +1,154 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: linear-gradient(180deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 100%);
+  transition: background-color 0.3s ease;
+}
+
+.scrolled {
+  background-color: #141414;
+}
+
+.Container {
+  display: flex;
+  align-items: center;
+  padding: 16px 4%;
+  gap: 40px;
+}
+
+.logo {
+  height: 26px;
+  display: block;
+}
+
+.nav {
+  display: flex;
+  gap: 20px;
+  flex: 1;
+}
+
+.navLink {
+  color: #e5e5e5;
+  text-decoration: none;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+.navLink:hover {
+  color: #b3b3b3;
+}
+
+.rightSection {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Search */
+.searchContainer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.searchButton {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  display: flex;
+}
+
+.searchInput {
+  background: rgba(0, 0, 0, 0.75);
+  border: 1px solid #fff;
+  color: white;
+  padding: 6px 10px;
+  font-size: 0.85rem;
+  outline: none;
+  width: 200px;
+}
+
+/* Notification */
+.iconButton {
+  position: relative;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  display: flex;
+}
+
+.notificationBadge {
+  position: absolute;
+  top: -6px;
+  right: -8px;
+  background: #e50914;
+  color: white;
+  font-size: 0.65rem;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Profile */
+.profileContainer {
+  position: relative;
+}
+
+.profileButton {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.userAvatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 4px;
+  background: #e50914;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.profileMenu {
+  position: absolute;
+  top: 45px;
+  right: 0;
+  background: rgba(0, 0, 0, 0.9);
+  border: 1px solid #333;
+  border-radius: 4px;
+  min-width: 180px;
+  padding: 8px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.profileMenuItem {
+  color: #e5e5e5;
+  text-decoration: none;
+  padding: 8px 16px;
+  font-size: 0.85rem;
+}
+
+.profileMenuItem:hover {
+  text-decoration: underline;
+}
+
+.profileMenuDivider {
+  border: none;
+  border-top: 1px solid #333;
+  margin: 6px 0;
+}

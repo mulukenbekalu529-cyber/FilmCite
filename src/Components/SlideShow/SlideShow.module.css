@@ -1,0 +1,21 @@
+.slideShow {
+  width: 100%;
+  padding: 20px 40px;
+  box-sizing: border-box;
+}
+
+.title {
+  color: white;
+  font-size: 24px;
+  margin: 0 0 15px;
+}
+
+.swiper {
+  width: 100%;
+  overflow: visible;
+}
+
+.slide {
+  width: 160px !important;
+  flex-shrink: 0;
+}
