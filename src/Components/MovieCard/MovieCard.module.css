@@ -10,6 +10,12 @@
    NORMAL POSTER
 ========================= */
 
+.posterWrapper {
+  position: relative;
+  width: 160px;
+  height: 240px;
+}
+
 .poster {
   width: 160px;
   height: 240px;
@@ -19,19 +25,43 @@
 }
 
 /* =========================
+   RECENTLY ADDED
+   BOTTOM OF NORMAL POSTER
+========================= */
+
+.badge {
+  position: absolute;
+
+  bottom: 10px;
+  left: 10px;
+
+  background: #e50914;
+  color: white;
+
+  font-size: 11px;
+  font-weight: 600;
+
+  padding: 5px 8px;
+
+  border-radius: 3px;
+
+  z-index: 10;
+}
+
+/* =========================
    HOVER CARD
 ========================= */
 
 .hoverCard {
   position: absolute;
 
-  width: 160px;
-  min-height: 300px;
+  top: -20px;
+  left: -20px;
 
-  top: -25px;
-  left: 0;
+  width: 260px;
 
   background: #181818;
+
   border-radius: 6px;
 
   overflow: hidden;
@@ -39,19 +69,14 @@
   opacity: 0;
   visibility: hidden;
 
-  transform: scale(0.98);
-  transform-origin: top center;
+  transform: scale(0.95);
 
   transition:
     opacity 0.2s ease,
     transform 0.2s ease;
 
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
-
   z-index: 100;
 }
-
-/* Hover */
 
 .cardWrapper:hover {
   z-index: 100;
@@ -70,17 +95,18 @@
 .imageWrapper {
   position: relative;
 
-  width: 160px;
-  height: 180px;
+  width: 100%;
+  height: 145px;
 
   overflow: hidden;
 }
 
 .imageWrapper img {
-  width: 160px;
-  height: 180px;
+  width: 100%;
+  height: 145px;
 
   object-fit: cover;
+
   display: block;
 }
 
@@ -90,20 +116,37 @@
 
 .buttonRow {
   display: flex;
+
   align-items: center;
 
-  gap: 6px;
+  gap: 8px;
 
-  padding: 8px 8px 4px;
+  padding: 10px 12px 5px;
 }
 
-.circleButton,
-.circleButtonSmall {
+.circleButton {
   cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.circleButton:hover {
+  transform: scale(1.1);
+  opacity: 0.8;
 }
 
 .circleButtonSmall {
   margin-left: auto;
+
+  cursor: pointer;
+
+  transition: transform 0.2s ease;
+}
+
+.circleButtonSmall:hover {
+  transform: scale(1.1);
 }
 
 /* =========================
@@ -112,24 +155,24 @@
 
 .metadataRow {
   display: flex;
+
   align-items: center;
 
-  gap: 5px;
+  gap: 6px;
 
-  padding: 5px 8px 3px;
+  padding: 5px 12px;
 }
 
 .tag {
-  color: #aaa;
+  color: #bcbcbc;
 
-  font-size: 9px;
+  font-size: 11px;
 
-  white-space: nowrap;
-}
-
-.tag:first-child {
   border: 1px solid #777;
-  padding: 2px 3px;
+
+  border-radius: 2px;
+
+  padding: 2px 5px;
 }
 
 /* =========================
@@ -138,42 +181,22 @@
 
 .genres {
   display: flex;
+
   align-items: center;
 
-  padding: 4px 8px 12px;
+  flex-wrap: wrap;
+
+  padding: 6px 12px 15px;
 
   color: #ddd;
 
-  font-size: 9px;
-
-  white-space: nowrap;
+  font-size: 12px;
 }
 
 .dot {
   color: #777;
-  margin: 0 2px;
-}
 
-/* =========================
-   BADGE
-========================= */
-
-.badge {
-  position: absolute;
-
-  top: 8px;
-  left: 8px;
-
-  background: #e50914;
-  color: white;
-
-  font-size: 9px;
-
-  padding: 3px 5px;
-
-  border-radius: 3px;
-
-  z-index: 2;
+  margin: 0 3px;
 }
 
 /* =========================
@@ -185,9 +208,13 @@
   height: 100%;
 
   display: flex;
+
   align-items: center;
   justify-content: center;
 
   background: #222;
+
   color: #aaa;
+
+  border-radius: 5px;
 }
