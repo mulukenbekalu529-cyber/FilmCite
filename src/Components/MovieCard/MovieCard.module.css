@@ -1,220 +1,243 @@
+
 .cardWrapper {
   position: relative;
-  width: 160px;
-  height: 240px;
-  flex-shrink: 0;
+  width: 100%;
+  height: 200px;
+  cursor: pointer;
+  overflow: visible;
   z-index: 1;
 }
 
-/* =========================
-   NORMAL POSTER
-========================= */
-
-.posterWrapper {
-  position: relative;
-  width: 160px;
-  height: 240px;
+.cardWrapper:hover {
+  z-index: 9999;
 }
 
+/* Main poster */
 .poster {
-  width: 160px;
-  height: 240px;
-  object-fit: cover;
   display: block;
-  border-radius: 5px;
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 6px;
+  background: #222;
 }
-
-/* =========================
-   RECENTLY ADDED
-   BOTTOM OF NORMAL POSTER
-========================= */
-
-.badge {
-  position: absolute;
-
-  bottom: 10px;
-  left: 10px;
-
-  background: #e50914;
-  color: white;
-
-  font-size: 11px;
-  font-weight: 600;
-
-  padding: 5px 8px;
-
-  border-radius: 3px;
-
-  z-index: 10;
-}
-
-/* =========================
-   HOVER CARD
-========================= */
-
 .hoverCard {
   position: absolute;
+  top: -45px;
+  left: 50%;
 
-  top: -10px;
-  left: -10px;
 
-  width: 190px;
-
-  background: #181818;
-
-  border-radius: 4px;
-
-  overflow: hidden;
-
+  width: 240px;
+  min-height: 300px;
+  background: #111;
+  border-radius: 8px;
+  transform: translateX(-50%) scale(0.95);
   opacity: 0;
   visibility: hidden;
-
-  transform: scale(0.95);
-
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
   transition:
-    opacity 0.2s ease,
-    transform 0.2s ease;
+    opacity 0.25s ease,
+    visibility 0.25s ease,
+    transform 0.25s ease;
 
-  z-index: 100;
+  z-index: 99999;
+
+
+  pointer-events: none;
+  overflow: visible;
+
+
+  /* ADD THESE */
+  overflow: visible;
 }
-
-.cardWrapper:hover {
-  z-index: 100;
-}
-
 .cardWrapper:hover .hoverCard {
   opacity: 1;
   visibility: visible;
-  transform: scale(1);
+  transform: translateX(-50%) scale(1);
+  pointer-events: auto;
 }
 
-/* =========================
-   HOVER IMAGE
-========================= */
 
-.imageWrapper {
-  position: relative;
-
-  width: 100%;
-  height: 145px;
-
-  overflow: hidden;
-}
-
-.imageWrapper img {
-  width: 100%;
-  height: 145px;
-
-  object-fit: cover;
-
+/* Hover image */
+.hoverImage {
   display: block;
+  width: 100%;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px 8px 0 0;
 }
 
-/* =========================
-   BUTTONS
-========================= */
+/* Recently added */
+.badge {
+  display: inline-block;
+  margin: 10px 12px 0;
+  padding: 3px 8px;
+  background: #e50914;
+  color: white;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 600;
+}
 
-.buttonRow {
+/* Title */
+.cardTitle {
+  margin: 10px 12px 0;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Buttons */
+.buttonsRow {
   display: flex;
-
   align-items: center;
-
   gap: 8px;
-
-  padding: 10px 12px 5px;
+  margin: 12px;
 }
 
-.circleButton {
+/* Normal buttons */
+.iconButton,
+.iconButtonSmall {
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  color: white;
+  border: 2px solid #777;
+  border-radius: 50%;
   cursor: pointer;
-
   transition:
     transform 0.2s ease,
-    opacity 0.2s ease;
+    background 0.2s ease,
+    border-color 0.2s ease;
 }
 
-.circleButton:hover {
-  transform: scale(1.1);
-  opacity: 0.8;
+.iconButton:hover,
+.iconButtonSmall:hover {
+  transform: scale(1.08);
+  background: #333;
+  border-color: white;
 }
 
-.circleButtonSmall {
+.iconButton svg {
+  font-size: 17px;
+}
+
+/* Arrow button */
+.iconButtonSmall {
   margin-left: auto;
-
-  cursor: pointer;
-
-  transition: transform 0.2s ease;
+  border-color: transparent;
 }
 
-.circleButtonSmall:hover {
-  transform: scale(1.1);
+.iconButtonSmall svg {
+  font-size: 25px;
 }
 
-/* =========================
-   METADATA
-========================= */
-
-.metadataRow {
+/* Metadata */
+.metaRow {
   display: flex;
-
   align-items: center;
-
-  gap: 6px;
-
-  padding: 5px 12px;
-}
-
-.tag {
-  color: #bcbcbc;
-
-  font-size: 11px;
-
-  border: 1px solid #777;
-
-  border-radius: 2px;
-
-  padding: 2px 5px;
-}
-
-/* =========================
-   GENRES
-========================= */
-
-.genres {
-  display: flex;
-
-  align-items: center;
-
-  flex-wrap: wrap;
-
-  padding: 6px 12px 15px;
-
-  color: #ddd;
-
+  gap: 9px;
+  margin: 8px 12px;
   font-size: 12px;
 }
 
-.dot {
-  color: #777;
-
-  margin: 0 3px;
+.tag {
+  color: #ddd;
 }
 
-/* =========================
-   NO POSTER
-========================= */
-
-.noPoster {
-  width: 100%;
-  height: 100%;
-
-  display: flex;
-
-  align-items: center;
-  justify-content: center;
-
-  background: #222;
-
+/* Genres */
+.genres {
+  margin: 6px 12px 12px;
   color: #aaa;
+  font-size: 12px;
+  line-height: 1.5;
+}
 
-  border-radius: 5px;
+.dot {
+  margin: 0 5px;
+  color: #777;
+}
+.overview {
+  margin: 10px 12px 15px;
+  color: #bcbcbc;
+  font-size: 12px;
+  line-height: 1.4;
+
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hoverCard {
+    width: 200px;
+  }
+
+  .hoverImage {
+    height: 100px;
+  }
+
+  .cardTitle {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 600px) {
+  .cardWrapper {
+    height: 155px;
+  }
+
+  .poster {
+    height: 100px;
+  }
+
+  .hoverCard {
+    width: 200px;
+    min-height: 240px;
+    top: -25px;
+  }
+
+  .hoverImage {
+    height: 90px;
+  }
+
+  .cardTitle {
+    font-size: 12px;
+  }
+
+  .buttonsRow {
+    gap: 5px;
+    margin: 8px;
+  }
+
+  .iconButton,
+  .iconButtonSmall {
+    width: 28px;
+    height: 28px;
+  }
+
+  .metaRow {
+    margin: 6px 8px;
+    gap: 6px;
+    font-size: 10px;
+  }
+
+  .genres {
+    margin: 5px 8px 8px;
+    font-size: 10px;
+  }
+
+  .overview {
+    margin: 0 8px 8px;
+    font-size: 8px;
+  }
 }

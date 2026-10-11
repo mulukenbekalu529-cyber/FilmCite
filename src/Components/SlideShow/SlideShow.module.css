@@ -1,21 +1,189 @@
-.slideShow {
+/* ============================================================
+   SLIDESHOW
+============================================================ */
+
+.rowWrapper {
   width: 100%;
-  padding: 20px 40px;
-  box-sizing: border-box;
+  margin-bottom: 10px;
 }
+
+/* ============================================================
+   TITLE
+============================================================ */
 
 .title {
-  color: white;
-  font-size: 24px;
-  margin: 0 0 15px;
+  margin: 0;
+  padding: 0 30px 8px;
+
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.2;
 }
 
-.swiper {
+/* ============================================================
+   ROW
+============================================================ */
+
+.Row {
+  position: relative;
   width: 100%;
   overflow: visible;
 }
 
-.slide {
-  width: 160px !important;
-  flex-shrink: 0;
+/* ============================================================
+   SWIPER
+============================================================ */
+
+.Row :global(.swiper) {
+  width: 100%;
+  height: 210px;
+  padding: 0 30px;
+  box-sizing: border-box;
+
+  overflow: visible !important;
+}
+
+/* Swiper wrapper */
+
+.Row :global(.swiper-wrapper) {
+  overflow: visible !important;
+}
+
+/* Individual slides */
+
+.Row :global(.swiper-slide) {
+  display: flex;
+  align-items: center;
+
+  height: 100%;
+
+  overflow: visible !important;
+}
+
+/* ============================================================
+   NAVIGATION ARROWS
+============================================================ */
+
+.Row :global(.swiper-button-prev),
+.Row :global(.swiper-button-next) {
+  width: 35px;
+  height: 100%;
+
+  top: 50%;
+  transform: translateY(-50%);
+
+  background: transparent !important;
+  color: #ffffff !important;
+
+  opacity: 0;
+  pointer-events: none;
+
+  transition: opacity 0.3s ease;
+}
+
+/* Show arrows when hovering the row */
+
+.Row:hover :global(.swiper-button-prev),
+.Row:hover :global(.swiper-button-next) {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Arrow size */
+
+.Row :global(.swiper-button-prev::after),
+.Row :global(.swiper-button-next::after) {
+  font-size: 20px !important;
+  font-weight: bold;
+}
+
+/* ============================================================
+   TABLET
+============================================================ */
+
+@media (max-width: 1024px) {
+  .rowWrapper {
+    margin-bottom: 8px;
+  }
+
+  .title {
+    padding: 0 25px 7px;
+    font-size: 18px;
+  }
+
+  .Row :global(.swiper) {
+    height: 200px;
+    padding: 0 25px;
+  }
+
+  .Row :global(.swiper-button-prev),
+  .Row :global(.swiper-button-next) {
+    width: 32px;
+  }
+
+  .Row :global(.swiper-button-prev::after),
+  .Row :global(.swiper-button-next::after) {
+    font-size: 18px !important;
+  }
+}
+
+/* ============================================================
+   MOBILE
+============================================================ */
+
+@media (max-width: 768px) {
+  .rowWrapper {
+    margin-bottom: 8px;
+  }
+
+  .title {
+    padding: 0 20px 6px;
+    font-size: 17px;
+  }
+
+  .Row :global(.swiper) {
+    height: 185px;
+    padding: 0 20px;
+  }
+
+  .Row :global(.swiper-button-prev),
+  .Row :global(.swiper-button-next) {
+    width: 30px;
+  }
+
+  .Row :global(.swiper-button-prev::after),
+  .Row :global(.swiper-button-next::after) {
+    font-size: 17px !important;
+  }
+}
+
+/* ============================================================
+   SMALL MOBILE
+============================================================ */
+
+@media (max-width: 480px) {
+  .rowWrapper {
+    margin-bottom: 5px;
+  }
+
+  .title {
+    padding: 0 15px 5px;
+    font-size: 16px;
+  }
+
+  .Row :global(.swiper) {
+    height: 165px;
+    padding: 0 15px;
+  }
+
+  .Row :global(.swiper-button-prev),
+  .Row :global(.swiper-button-next) {
+    width: 25px;
+  }
+
+  .Row :global(.swiper-button-prev::after),
+  .Row :global(.swiper-button-next::after) {
+    font-size: 15px !important;
+  }
 }

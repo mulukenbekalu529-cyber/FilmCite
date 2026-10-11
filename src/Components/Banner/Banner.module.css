@@ -1,68 +1,276 @@
+/* BANNER */
 .banner {
-  background-image: url("../../assets/image/banner.jpeg");
-  color: white;
-  object-fit: contain;
+  position: relative;
+  width: 100%;
+  height: 620px;
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
-  width: 100%;
-}
-
-.contents {
-  padding-left: 15px;
-  padding-top: 330px;
-}
-.logoImg {
-  width: 150px;
-}
-.title {
-  font-size: 3rem;
-  font-weight: 800;
-  padding-bottom: 0.3rem;
-}
-.description {
-  font-size: 23px;
-  line-height: 1.3;
-  padding-top: 0.5rem;
-  max-width: 740px;
-  height: 80px;
-}
-.buttonContainer {
   display: flex;
-  gap: 1rem;
-  margin-bottom: 1rem;
+  align-items: center;
+  overflow: hidden;
+  background-color: #141414;
 }
 
-.button {
-  display: inline-flex;
+/* LOADING MESSAGE */
+.loading {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  color: #ffffff;
+  text-align: center;
+  font-size: 20px;
+}
+
+/* DARK OVERLAY */
+.overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.78) 0%,
+    rgba(0, 0, 0, 0.58) 20%,
+    rgba(0, 0, 0, 0.30) 45%,
+    rgba(0, 0, 0, 0.08) 75%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+/* BOTTOM FADE */
+.banner::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 180px;
+  z-index: 2;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(20, 20, 20, 0.15) 30%,
+    rgba(20, 20, 20, 0.70) 75%,
+    #141414 100%
+  );
+  pointer-events: none;
+}
+
+/* BANNER CONTENT */
+.bannerContent {
+  position: relative;
+  z-index: 3;
+  width: 45%;
+  margin-left: 42px;
+  margin-top: 200px;
+  color: #ffffff;
+}
+
+/* NETFLIX LABEL */
+.netflix {
+  color: #e50914;
+  font-size: 25px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin: 0 0 12px;
+  cursor: pointer;
+}
+
+/* MOVIE TITLE */
+.title {
+  color: #ffffff;
+  font-size: 36px;
+  line-height: 1.1;
+  font-weight: 700;
+  margin: 0 0 18px;
+  max-width: 520px;
+}
+
+/* MOVIE DESCRIPTION */
+.description {
+  color: #ffffff;
+  font-size: 17px;
+  line-height: 1.5;
+  font-weight: 400;
+  max-width: 520px;
+  margin: 0 0 22px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+/* MORE / LESS BUTTON */
+.moreLink {
+  color: #e50914;
+  margin-left: 8px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 12px;
+  transition: color 0.2s ease;
+}
+
+.moreLink:hover {
+  color: #ff1f2d;
+  text-decoration: underline;
+}
+
+/* BUTTON CONTAINER */
+.buttons {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* PLAY BUTTON */
+.playButton {
+  display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  cursor: pointer;
-  color: black;
-  outline: none;
+  min-width: 110px;
+  height: 40px;
+  padding: 0 20px;
   border: none;
-  font-weight: 700;
-  border-radius: 0.2vw;
-  padding-left: 2rem;
-  padding-right: 2rem;
-  margin-right: 1rem;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-  background-color: white;
+  border-radius: 4px;
+  background: #ffffff;
+  color: #000000;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
 }
-.button:hover {
-  color: white;
-  background-color: rgba(51, 51, 51, 0.5);
-  transition: all 0.2s;
+
+.playButton svg {
+  width: 17px;
+  height: 17px;
 }
-.fadeBottom {
-  height: 11rem;
-  background-image: linear-gradient(
-    180deg,
-    transparent,
-    rgba(37, 37, 37, 0.61),
-    #111
-  );
-  width: 100%;
+
+.playButton:hover {
+  background: rgba(255, 255, 255, 0.75);
+  transform: scale(1.03);
+}
+
+/* MY LIST BUTTON */
+.myListButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-width: 110px;
+  height: 40px;
+  padding: 0 20px;
+  border: none;
+  border-radius: 4px;
+  background: rgba(109, 109, 110, 0.75);
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.myListButton svg {
+  width: 17px;
+  height: 17px;
+}
+
+.myListButton:hover {
+  background: rgba(109, 109, 110, 0.5);
+  transform: scale(1.03);
+}
+
+/* KEYBOARD ACCESSIBILITY */
+.playButton:focus-visible,
+.myListButton:focus-visible,
+.moreLink:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 3px;
+}
+
+/* TABLET */
+@media (max-width: 900px) {
+  .banner {
+    height: 500px;
+  }
+
+  .bannerContent {
+    width: 55%;
+    margin-left: 30px;
+    margin-top: 70px;
+  }
+
+  .netflix {
+    font-size: 20px;
+  }
+
+  .title {
+    font-size: 32px;
+    max-width: 450px;
+  }
+
+  .description {
+    font-size: 15px;
+    max-width: 430px;
+  }
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+  .banner {
+    height: 560px;
+    align-items: flex-end;
+    background-position: center center;
+  }
+
+  .overlay {
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.05) 0%,
+      rgba(0, 0, 0, 0.30) 40%,
+      rgba(0, 0, 0, 0.90) 85%,
+      #141414 100%
+    );
+  }
+
+  .bannerContent {
+    width: auto;
+    margin: 0 20px 55px;
+  }
+
+  .netflix {
+    font-size: 15px;
+    margin-bottom: 10px;
+  }
+
+  .title {
+    font-size: 30px;
+    margin-bottom: 14px;
+  }
+
+  .description {
+    font-size: 14px;
+    line-height: 1.45;
+    max-width: 100%;
+    margin-bottom: 18px;
+  }
+
+  .buttons {
+    gap: 8px;
+  }
+
+  .playButton,
+  .myListButton {
+    min-width: 95px;
+    height: 36px;
+    padding: 0 14px;
+    font-size: 12px;
+  }
+
+  .playButton svg,
+  .myListButton svg {
+    width: 15px;
+    height: 15px;
+  }
 }

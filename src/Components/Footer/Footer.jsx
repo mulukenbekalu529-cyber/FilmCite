@@ -1,49 +1,104 @@
 import React from "react";
-import styles from "./Footer.module.css";
 import { FaFacebookF, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
+import styles from "./Footer.module.css";
 
-function Footer() {
-  const linkColumns = [
-    ["Audio Description", "Investor Relations", "Legal Notices"],
-    ["Help Centre", "Jobs", "Cookie Preferences"],
-    ["Gift Cards", "Terms of Use", "Corporate Information"],
-    ["Media Centre", "Privacy", "Contact Us"],
-  ];
-
+const Footer = () => {
   return (
-    <footer className={styles.footer}>
-      <div className={styles.container}>
-        <div className={styles.socialIcons}>
-          <a href="#" aria-label="Facebook">
-            <FaFacebookF size={20} />
+    <footer className={styles.footer_container}>
+      <div className={styles.footer_inner}>
+        <div className={styles.social_icons}>
+          <a
+            href="https://facebook.com"
+            target="_blank"
+            rel="noreferrer"
+            className={styles.icon_link}
+          >
+            <FaFacebookF />
           </a>
-          <a href="#" aria-label="Instagram">
-            <FaInstagram size={20} />
+          <a
+            href="https://instagram.com"
+            target="_blank"
+            rel="noreferrer"
+            className={styles.icon_link}
+          >
+            <FaInstagram />
           </a>
-          <a href="#" aria-label="Twitter">
-            <FaTwitter size={20} />
+          <a
+            href="https://twitter.com"
+            target="_blank"
+            rel="noreferrer"
+            className={styles.icon_link}
+          >
+            <FaTwitter />
           </a>
-          <a href="#" aria-label="YouTube">
-            <FaYoutube size={20} />
+          <a
+            href="https://youtube.com"
+            target="_blank"
+            rel="noreferrer"
+            className={styles.icon_link}
+          >
+            <FaYoutube />
           </a>
         </div>
 
-        <div className={styles.linkGrid}>
-          {linkColumns.map((column, colIndex) => (
-            <ul className={styles.linkColumn} key={colIndex}>
-              {column.map((link) => (
-                <li key={link}>
-                  <a href="#">{link}</a>
-                </li>
-              ))}
-            </ul>
-          ))}
+        <div className={styles.footer_links_grid}>
+          {/* COLUMN 1 */}
+          <ul>
+            <li>
+              <a href="#audio">Audio Description</a>
+            </li>
+            <li>
+              <a href="#investor">Investor Relations</a>
+            </li>
+            <li>
+              <a href="#legal">Legal Notices</a>
+            </li>
+          </ul>
+
+          {/* COLUMN 2 */}
+          <ul>
+            <li>
+              <a href="#help">Help Centre</a>
+            </li>
+            <li>
+              <a href="#jobs">Jobs</a>
+            </li>
+            <li>
+              <a href="#cookie">Cookie Preferences</a>
+            </li>
+          </ul>
+
+          {/* COLUMN 3 */}
+          <ul>
+            <li>
+              <a href="#gift">Gift Cards</a>
+            </li>
+            <li>
+              <a href="#terms">Terms of Use</a>
+            </li>
+            <li>
+              <a href="#corporate">Corporate Information</a>
+            </li>
+          </ul>
+
+          {/* COLUMN 4 */}
+          <ul>
+            <li>
+              <a href="#media">Media Centre</a>
+            </li>
+            <li>
+              <a href="#privacy">Privacy</a>
+            </li>
+            <li>
+              <a href="#contact">Contact Us</a>
+            </li>
+          </ul>
         </div>
 
-        <p className={styles.copyright}>© 1997–2026 Netflix, Inc.</p>
+        <div className={styles.footer_copyright}>© 1997-2026 Netflix, Inc.</div>
       </div>
     </footer>
   );
-}
+};
 
 export default Footer;

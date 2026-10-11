@@ -1,4 +1,19 @@
 .mainWrapper {
-  padding-left: 2%;
-  background-color: black;
+  width: 100%;
+  min-height: 100vh;
+  background-color: #000;
+  color: #fff;
+
+  padding: 25px 2% 60px;
+
+  /* Prevent horizontal browser scrolling. */
+  overflow-x: clip;
+  overflow-y: visible;
+}
+
+@media (max-width: 600px) {
+  .mainWrapper {
+    padding-top: 15px;
+    padding-bottom: 40px;
+  }
 }

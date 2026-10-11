@@ -1,78 +1,165 @@
 import React, { useEffect, useState } from "react";
+import { FaPlay, FaPlus } from "react-icons/fa";
+import { GoCheckCircleFill } from "react-icons/go";
 import styles from "./Banner.module.css";
-import { Play, Info } from "lucide-react";
+import BASE_URL from "../../Utility/MovieInstance.js";
+import requests from "../../Utility/requestUrls.js";
 
-import movieinstance from "../../Utility/movieInstance";
-import requests from "../../Utility/requestUrl";
+const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/original";
 
-function Banner() {
+const Banner = () => {
   const [movie, setMovie] = useState(null);
+  const [isExpanded, setIsExpanded] = useState(false);
+  const [isInMyList, setIsInMyList] = useState(false);
+  const [error, setError] = useState("");
 
+  // Fetch a trending movie for the banner.
   useEffect(() => {
-    async function fetchBannerMovie() {
+    const fetchBannerMovie = async () => {
       try {
-        const response = await movieinstance.get(
-          requests.fetchNetflixOriginals,
-        );
+        setError("");
 
-        const results = response.data.results;
+        const response = await BASE_URL.get(requests.fetchTrending);
+        const data = response.data;
 
-        if (results && results.length > 0) {
+        if (data.results && data.results.length > 0) {
           const randomMovie =
-            results[Math.floor(Math.random() * results.length)];
+            data.results[Math.floor(Math.random() * data.results.length)];
 
           setMovie(randomMovie);
+        } else {
+          setError("No movies are available right now.");
         }
       } catch (error) {
-        console.error("Error fetching banner movie:", error);
+        console.error("Banner API Error:", error);
+        setError("Unable to load movies. Please try again later.");
       }
-    }
+    };
 
     fetchBannerMovie();
   }, []);
 
-  if (!movie) {
-    return null;
-  }
+  // Check whether the banner movie is already in My List.
+  useEffect(() => {
+    if (!movie) return;
 
-  const truncate = (text, max = 150) => {
-    if (!text) return "";
+    try {
+      const savedMovies = JSON.parse(localStorage.getItem("myList") || "[]");
 
-    return text.length > max ? text.substring(0, max) + "..." : text;
+      setIsInMyList(savedMovies.some((item) => item.id === movie.id));
+    } catch (error) {
+      console.error("Could not read My List:", error);
+      setIsInMyList(false);
+    }
+  }, [movie]);
+
+  // Open the movie or TV show details on TMDB.
+  const handlePlay = () => {
+    if (!movie) return;
+
+    const mediaType = movie.media_type === "tv" || movie.name ? "tv" : "movie";
+
+    const movieUrl = `https://www.themoviedb.org/${mediaType}/${movie.id}`;
+
+    window.open(movieUrl, "_blank", "noopener,noreferrer");
   };
 
-  const backgroundImage = movie.backdrop_path
-    ? `url(https://image.tmdb.org/t/p/original${movie.backdrop_path})`
-    : "none";
+  // Add the banner movie to My List or remove it if already saved.
+  const handleMyList = () => {
+    if (!movie) return;
+
+    try {
+      const savedMovies = JSON.parse(localStorage.getItem("myList") || "[]");
+
+      const alreadySaved = savedMovies.some((item) => item.id === movie.id);
+
+      const updatedMovies = alreadySaved
+        ? savedMovies.filter((item) => item.id !== movie.id)
+        : [...savedMovies, movie];
+
+      localStorage.setItem("myList", JSON.stringify(updatedMovies));
+
+      setIsInMyList(!alreadySaved);
+    } catch (error) {
+      console.error("Could not update My List:", error);
+      alert("Unable to update My List. Please try again.");
+    }
+  };
+
+  if (!movie) {
+    return (
+      <section className={styles.banner}>
+        <div className={styles.loading}>{error || "Loading..."}</div>
+      </section>
+    );
+  }
+
+  const title = movie.title || movie.name || movie.original_name || "Untitled";
+
+  const description = movie.overview || "";
+
+  const shouldTruncate = description.length > 150 && !isExpanded;
+
+  const finalDescription = shouldTruncate
+    ? description.slice(0, 150) + "..."
+    : description;
 
   return (
-    <div
+    <section
       className={styles.banner}
       style={{
-        backgroundImage: backgroundImage,
+        backgroundImage: movie.backdrop_path
+          ? `url(${IMAGE_BASE_URL}${movie.backdrop_path})`
+          : "none",
       }}
     >
-      <div className={styles.contents}>
-        <h1 className={styles.title}>{movie.title || movie.name}</h1>
+      <div className={styles.overlay}></div>
 
-        <p className={styles.description}>{truncate(movie.overview)}</p>
+      <div className={styles.bannerContent}>
+        <p className={styles.netflix}>Netflix</p>
 
-        <div className={styles.buttonContainer}>
-          <button className={styles.button}>
-            <Play size={24} />
+        <h1 className={styles.title}>{title}</h1>
+
+        <p className={styles.description}>
+          {finalDescription}
+
+          {description.length > 150 && (
+            <button
+              type="button"
+              onClick={() => setIsExpanded(!isExpanded)}
+              className={styles.moreLink}
+              aria-expanded={isExpanded}
+            >
+              {isExpanded ? " Less" : " More"}
+            </button>
+          )}
+        </p>
+
+        <div className={styles.buttons}>
+          <button
+            type="button"
+            className={styles.playButton}
+            onClick={handlePlay}
+            aria-label={`View details for ${title}`}
+          >
+            <FaPlay />
             <span>Play</span>
           </button>
 
-          <button className={styles.button}>
-            <Info size={24} />
-            <span>More Info</span>
+          <button
+            type="button"
+            className={styles.myListButton}
+            onClick={handleMyList}
+            aria-pressed={isInMyList}
+          >
+            {isInMyList ? <GoCheckCircleFill /> : <FaPlus />}
+
+            <span>{isInMyList ? "Added to My List" : "My List"}</span>
           </button>
         </div>
       </div>
-
-      <div className={styles.fadeBottom} />
-    </div>
+    </section>
   );
-}
+};
 
 export default Banner;
