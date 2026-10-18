@@ -116,7 +116,7 @@ const Banner = () => {
       <div className={styles.overlay}></div>
 
       <div className={styles.bannerContent}>
-        <p className={styles.netflix}>Netflix</p>
+        <p className={styles.filmcite}>FilmCite</p>
 
         <h1 className={styles.title}>{title}</h1>
 
