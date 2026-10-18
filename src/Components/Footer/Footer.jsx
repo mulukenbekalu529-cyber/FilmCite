@@ -95,7 +95,7 @@ const Footer = () => {
           </ul>
         </div>
 
-        <div className={styles.footer_copyright}>© 1997-2026 Netflix, Inc.</div>
+        <div className={styles.footer_copyright}>© 1997-2026 FilmCite, Inc.</div>
       </div>
     </footer>
   );

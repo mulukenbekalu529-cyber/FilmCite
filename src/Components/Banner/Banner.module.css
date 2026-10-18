@@ -66,8 +66,8 @@
   color: #ffffff;
 }
 
-/* NETFLIX LABEL */
-.netflix {
+/* FILMCITE LABEL */
+.filmcite {
   color: #e50914;
   font-size: 25px;
   font-weight: 700;
@@ -201,7 +201,7 @@
     margin-top: 70px;
   }
 
-  .netflix {
+  .filmcite {
     font-size: 20px;
   }
 
@@ -239,7 +239,7 @@
     margin: 0 20px 55px;
   }
 
-  .netflix {
+  .filmcite {
     font-size: 15px;
     margin-bottom: 10px;
   }

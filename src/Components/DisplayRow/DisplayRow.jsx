@@ -7,7 +7,7 @@ import requests from "../../Utility/requestUrls.js";
 function DisplayRow() {
   const [movies, setMovies] = useState({
     trending: [],
-    netflixOriginals: [],
+    filmCiteOriginals: [],
     topRated: [],
     action: [],
     comedy: [],
@@ -24,7 +24,7 @@ function DisplayRow() {
     try {
       const [
         trendingRes,
-        netflixRes,
+        filmCiteOriginalsRes,
         topRatedRes,
         actionRes,
         comedyRes,
@@ -33,7 +33,7 @@ function DisplayRow() {
         docRes,
       ] = await Promise.all([
         BASE_URL.get(requests.fetchTrending),
-        BASE_URL.get(requests.fetchNetflixOriginals),
+        BASE_URL.get(requests.fetchFilmCiteOriginals),
         BASE_URL.get(requests.fetchTopRatedMovies),
         BASE_URL.get(requests.fetchActionMovies),
         BASE_URL.get(requests.fetchComedyMovies),
@@ -43,7 +43,7 @@ function DisplayRow() {
       ]);
       setMovies({
         trending: trendingRes.data.results,
-        netflixOriginals: netflixRes.data.results,
+        filmCiteOriginals: filmCiteOriginalsRes.data.results,
         topRated: topRatedRes.data.results,
         action: actionRes.data.results,
         comedy: comedyRes.data.results,
@@ -59,9 +59,12 @@ function DisplayRow() {
 
   return (
     <div className={styles.mainWrapper}>
-      <SlideShow title="Netflix Trending" movies={movies?.trending} />
+      <SlideShow title="FilmCite Trending" movies={movies?.trending} />
 
-      <SlideShow title="Popular on Netflix" movies={movies?.netflixOriginals} />
+      <SlideShow
+        title="Popular on FilmCite"
+        movies={movies?.filmCiteOriginals}
+      />
 
       <SlideShow title="Action" movies={movies?.action} />
 

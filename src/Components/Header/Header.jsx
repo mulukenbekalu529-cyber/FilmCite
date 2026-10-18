@@ -75,7 +75,7 @@ function Header() {
         {/* LOGO */}
         <div className={style.logo}>
           <span className={style.logoIcon}>▶</span>
-          <span className={style.logoText}>NETFLIX</span>
+          <span className={style.logoText}>FILMCITE</span>
         </div>
 
         {/* NAVIGATION */}
